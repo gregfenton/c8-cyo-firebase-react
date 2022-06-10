@@ -20,7 +20,7 @@ function RestOfApp() {
       <br />
       <br />
       <br />
-      <AddHeroForm /> 
+      {user && <AddHeroForm />}
       <HeroesList />
     </div>
   );
