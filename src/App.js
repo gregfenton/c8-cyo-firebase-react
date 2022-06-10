@@ -1,10 +1,13 @@
 import RestOfApp from './components/RestOfApp';
+import AuthProvider from './providers/AuthProvider';
 import FirebaseProvider from './providers/FirebaseProvider';
 
 function App() {
   return (
     <FirebaseProvider>
-      <RestOfApp />;
+      <AuthProvider>
+        <RestOfApp />;
+      </AuthProvider>
     </FirebaseProvider>
   );
 }
