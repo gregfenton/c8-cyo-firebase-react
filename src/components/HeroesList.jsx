@@ -1,5 +1,6 @@
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
 import { FirebaseContext } from '../providers/FirebaseProvider';
 import UploadImage from './UploadImage';
 
@@ -7,10 +8,13 @@ function HeroesList() {
   const fbContext = useContext(FirebaseContext);
   const db = fbContext.db;
 
+  const authContext = useContext(AuthContext);
+  const user = authContext.user;
+
   const [heroes, setHeroes] = useState([]);
 
   useEffect(() => {
-    if (db) {
+    if (db && user) {
       let collectionRef = collection(db, 'heroes');
       let queryRef = query(collectionRef, orderBy('name'));
       const unsubscribe = onSnapshot(queryRef, (querySnap) => {
@@ -26,7 +30,7 @@ function HeroesList() {
 
       return unsubscribe;
     }
-  }, [db]);
+  }, [db, user]);
 
   return (
     <div>
