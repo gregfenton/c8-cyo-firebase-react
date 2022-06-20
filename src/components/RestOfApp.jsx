@@ -5,6 +5,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import LoginForm from './LoginForm';
 import HeroesList from './HeroesList';
 import AddHeroForm from './AddHeroForm';
+import HeroesCount from './HeroesCount';
 
 function RestOfApp() {
   const authContext = useContext(AuthContext);
@@ -21,6 +22,13 @@ function RestOfApp() {
       <br />
       <br />
       {user && <AddHeroForm />}
+      <br />
+      <br />
+      <br />
+      <HeroesCount />
+      <br />
+      <br />
+      <br />
       <HeroesList />
     </div>
   );
