@@ -6,30 +6,20 @@ import LoginForm from './LoginForm';
 import HeroesList from './HeroesList';
 import AddHeroForm from './AddHeroForm';
 import HeroesCount from './HeroesCount';
+import CallCloudFunction from './CallCloudFunction';
 
 function RestOfApp() {
   const authContext = useContext(AuthContext);
   const user = authContext.user;
   return (
     <div className='App'>
-      {user ? 'you are logged in!' : 'not logged in 😔'}
-      <br />
-      <br />
+      {user ? `you are logged in! (${user.email})` : 'not logged in 😔'}
       <br />
       <br />
       <LoginForm />
       <br />
       <br />
-      <br />
-      {user && <AddHeroForm />}
-      <br />
-      <br />
-      <br />
-      <HeroesCount />
-      <br />
-      <br />
-      <br />
-      <HeroesList />
+      <CallCloudFunction />
     </div>
   );
 }
